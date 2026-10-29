@@ -12,6 +12,7 @@ let pendingGrowth;  // number
 let gameLoop;       // will hold the setInterval reference
 let running;        // boolean - is the game currently running
 let paused = false;
+
 function  makeBoard() {
 //style the board element to show as a grid
     const board = document.getElementById('board');
@@ -107,7 +108,7 @@ function tick() {
     // 6. check food
     if (newHead.x === food.x && newHead.y === food.y) {
         pendingGrowth++;
-        score++;
+        score+= 1;
         spawnFood();
         if (score % 5 === 0) {
             level++;
@@ -124,7 +125,7 @@ function tick() {
 
     // 8. draw
     draw();
-
+    updateHub();
 }
 
 function restartLoop() {
